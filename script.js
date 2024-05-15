@@ -1,4 +1,10 @@
 const myLibrary = [];
+const libraryDiv = document.querySelector(".library");
+const libraryForm = document.querySelector('form')
+const librarySearch = document.querySelector('.bookSearch')
+
+// finish connecting form to script with tests!
+
 
 function Book(title, author, pages, read) {
     this.title = title;
