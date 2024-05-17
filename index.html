@@ -11,11 +11,38 @@
   <body>
     <div class="searchBar">
       <form>
-        <input
-          class="bookSearch"
-          type="text"
-          placeholder="Enter New Book Here!"
-        />
+        <ul>
+          <li>
+            <label for="title">Title</label>
+            <input
+              name="title"
+              id="title"
+              class="bookTitle"
+              type="text"
+              placeholder="Title"
+            />
+          </li>
+          <li>
+            <label for="author">Author</label>
+            <input
+              name="author"
+              id="author"
+              class="bookAuthor"
+              type="text"
+              placeholder="author"
+            />
+          </li>
+          <li>
+            <label for="pages">Length</label>
+            <input class="bookLength" type="number" placeholder="pages" />
+          </li>
+          <li>
+            <label for="read">Read</label>
+            <input class="haveRead" type="radio" name="read" id="read" />
+            <label for="unread">Unread</label>
+            <input class="unread" type="radio" name="read" id="unread" />
+          </li>
+        </ul>
         <button type="submit">Submit</button>
         <div class="library"></div>
       </form>

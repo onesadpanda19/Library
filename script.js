@@ -1,9 +1,9 @@
 const myLibrary = [];
 const libraryDiv = document.querySelector(".library");
 const libraryForm = document.querySelector('form')
-const librarySearch = document.querySelector('.bookSearch')
+const librarySearch = document.querySelector('.searchBar')
 
-// finish connecting form to script with tests!
+// finish connecting form to script with tests! look into hijacking info from the form to submit into book function
 
 
 function Book(title, author, pages, read) {
