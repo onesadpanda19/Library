@@ -6,11 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <link rel="stylesheet" href="style.css" />
-    <script src="script.js"></script>
+    <script defer src="script.js"></script>
   </head>
   <body>
     <div class="searchBar">
-      <form>
+      <form class="bookForm">
         <ul>
           <li>
             <label for="title">Title</label>
@@ -34,7 +34,12 @@
           </li>
           <li>
             <label for="pages">Length</label>
-            <input class="bookLength" type="number" placeholder="pages" />
+            <input
+              name="pages"
+              class="bookLength"
+              type="number"
+              placeholder="pages"
+            />
           </li>
           <li>
             <label for="read">Read</label>

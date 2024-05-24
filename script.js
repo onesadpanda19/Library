@@ -1,7 +1,7 @@
 const myLibrary = [];
 const libraryDiv = document.querySelector(".library");
 const libraryForm = document.querySelector('form')
-const librarySearch = document.querySelector('.searchBar')
+
 
 // finish connecting form to script with tests! look into hijacking info from the form to submit into book function
 
@@ -32,3 +32,21 @@ console.log(theHobbit)
 addBookToLibrary('gloop', 'me', '3', 'read')
 
 console.log(myLibrary)
+
+const form = document.querySelector('.bookForm')
+
+
+form.addEventListener('submit',(e) =>{
+    e.preventDefault();
+    const newTitle = data.get('title');
+    const newAuthor = data.get('author');
+    const newPages = data.get('pages')
+    const newRead = data.get('read')
+
+
+    console.log(newTitle)
+    console.log(newAuthor)
+    console.log(newPages)
+    console.log(newRead)
+})
+
