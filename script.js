@@ -1,4 +1,5 @@
 const myLibrary = [];
+
 const libraryDiv = document.querySelector(".library");
 const libraryForm = document.querySelector('form')
 
@@ -16,6 +17,9 @@ function Book(title, author, pages, read) {
 const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295 pages', 'read')
 const endersGame = new Book('Enders Game', 'Orson Scott Card', '324', 'read' )
 
+myLibrary.push(theHobbit)
+myLibrary.push(endersGame)
+console.log(myLibrary)
 /**
  * - takes in user input (strings) creates a book object and adds them to an array (myLibrary)
  * @param {string} title - Title of the book to add to library
@@ -28,25 +32,31 @@ function addBookToLibrary(title, author, pages, read) {
     let newBook = new Book(title, author, pages, read)
     myLibrary.push(newBook)
 }
-console.log(theHobbit)
-addBookToLibrary('gloop', 'me', '3', 'read')
-
-console.log(myLibrary)
 
 const form = document.querySelector('.bookForm')
 
+/**look into formData mdm data is undefined */
 
 form.addEventListener('submit',(e) =>{
+    const data = new FormData(form)
+    // when form is submitted
     e.preventDefault();
     const newTitle = data.get('title');
     const newAuthor = data.get('author');
     const newPages = data.get('pages')
     const newRead = data.get('read')
 
+    addBookToLibrary(newTitle, newAuthor, newPages, newRead)
 
     console.log(newTitle)
-    console.log(newAuthor)
+    console.log(newAuthor)  
     console.log(newPages)
     console.log(newRead)
+    console.log(myLibrary)
 })
 
+let i = 0
+
+while (i < libraryDiv.length) {
+    libraryDiv.textContent = 'myLibrary'
+}
