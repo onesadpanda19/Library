@@ -55,8 +55,44 @@ form.addEventListener('submit',(e) =>{
     console.log(myLibrary)
 })
 
-let i = 0
 
-while (i < libraryDiv.length) {
-    libraryDiv.textContent = 'myLibrary'
+// on each execution of the loop, grab the matching index (book)
+//* add new card for each item looped over, start there
+// [hobbit, endersGame]
+let endersGameBook = myLibrary[1];
+
+for (let i = 0; i < myLibrary.length; i++) {
+    // Block executes once for every item in the library
+    // Grab each item during the loop iteration
+    // Variable i will be the number of the loop, indexed at 0
+    let book = myLibrary[i];
+
+    console.log(book);
+    libraryDiv.textContent = '';
 }
+
+/*
+let j = 0
+
+while (myLibrary.length > j) {
+    let book = myLibrary[j];
+
+    j++
+}
+
+const newDataArray = myLibrary.map((book, i) => {
+    console.log(book);
+
+    book.data = `This is book number ${i}`
+
+    return book;
+});
+
+console.log('NEW ARRAY ', newDataArray);
+myLibrary.forEach((book) => {
+    console.log(book)
+
+
+});
+
+*/
