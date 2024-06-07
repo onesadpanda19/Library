@@ -91,9 +91,19 @@ function displayLibrary () {
         const div = document.createElement("div")
         div.classList.toggle("activeBook")
         console.log(book);
-        div.textContent = `Title:${book.title}, Author:${book.author}, Pages:${book.pages} pages, Read Status:${book.read} `;
+        let removeButton = document.createElement('button') 
+        removeButton.textContent = "Remove"
+        div.textContent = `Title:${book.title}, Author:${book.author}, Pages:${book.pages} pages, Read Status:${book.read}`;
         libraryDiv.appendChild(div)
+        div.appendChild(removeButton)
+        removeButton.addEventListener("click", removeFromLibrary)
     }
+}
+
+
+// To give a quick hint, e will be the event of the click. All events have on them, a way to access the element being clicked! You might want to look at MDN for events, just to refresh, but it's going to be the event.target property, so take a look into that!
+function removeFromLibrary (e) {
+    div.removeChild([e])
 }
 
 displayLibrary()
@@ -120,7 +130,7 @@ console.log('NEW ARRAY ', newDataArray);
 myLibrary.forEach((book) => {
     console.log(book)
 
-
+add buttons to remove a book from the library and change read status
 });
 
 */
