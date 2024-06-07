@@ -14,7 +14,7 @@ function Book(title, author, pages, read) {
     this.read = read;
 }
 
-const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295 pages', 'read')
+const theHobbit = new Book('The Hobbit', 'J.R.R Tolkien', '295', 'read')
 const endersGame = new Book('Enders Game', 'Orson Scott Card', '324', 'read' )
 
 myLibrary.push(theHobbit)
@@ -53,23 +53,51 @@ form.addEventListener('submit',(e) =>{
     console.log(newPages)
     console.log(newRead)
     console.log(myLibrary)
+
+    removeBooks()
+    displayLibrary()
 })
 
 
 // on each execution of the loop, grab the matching index (book)
 //* add new card for each item looped over, start there
 // [hobbit, endersGame]
+let theHobbitBook = myLibrary[0]
 let endersGameBook = myLibrary[1];
 
-for (let i = 0; i < myLibrary.length; i++) {
-    // Block executes once for every item in the library
-    // Grab each item during the loop iteration
-    // Variable i will be the number of the loop, indexed at 0
-    let book = myLibrary[i];
-
-    console.log(book);
-    libraryDiv.textContent = '';
+function removeBooks () {
+    let remove = document.querySelectorAll(".activeBook")
+    remove.forEach((oldBook) =>{
+        libraryDiv.removeChild(oldBook)
+    })
 }
+
+/* Issue:
+  When adding a book to the library,
+  it duplicates
+
+  Solution:
+  Remove old books, before adding new books
+
+  when adding book (.addEventListener) -> check for old books -> remove old books -> displayLibrary()
+*/
+
+function displayLibrary () {
+    for (let i = 0; i < myLibrary.length; i++) {
+        // Block executes once for every item in the library
+        // Grab each item during the loop iteration
+        // Variable i will be the number of the loop, indexed at 0
+        let book = myLibrary[i];
+        const div = document.createElement("div")
+        div.classList.toggle("activeBook")
+        console.log(book);
+        div.textContent = `Title:${book.title}, Author:${book.author}, Pages:${book.pages} pages, Read Status:${book.read} `;
+        libraryDiv.appendChild(div)
+    }
+}
+
+displayLibrary()
+
 
 /*
 let j = 0
