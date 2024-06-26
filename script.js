@@ -100,10 +100,31 @@ function displayLibrary () {
     }
 }
 
+/* 
+    Problem: When click remove button, it removes book from page
+    1) We have the button
+    2) We add an event listener, that will fire when clicking the remove
+    3) We have an event handler function
+    4) We have a way to get the button being clicked (event.target) removeButton 
+    5) We need the parent of removeButton, because that is the book element that we want to remove
+    6) We need somehow, inside this function, to link the removeButton being clicked, to the parent (so we can remove the parent)
+    7) Google: js how to identify parent element of button being clicked
+    8) https://stackoverflow.com/questions/42213858/how-can-i-get-parent-id-by-onclick-on-a-child-in-js
+
+    <div id="rnd()"><button id="myBtn">Click</button></div>
+    <script>
+        document.getElementById("myBtn").onclick = function(e){
+            alert(e.target.parentNode);
+        }
+    </script>
+*/
 
 // To give a quick hint, e will be the event of the click. All events have on them, a way to access the element being clicked! You might want to look at MDN for events, just to refresh, but it's going to be the event.target property, so take a look into that!
 function removeFromLibrary (e) {
-    div.removeChild([e])
+    let removeElement = e.target.parentNode;
+    console.log(removeElement)
+    div.removeChild(removeElement)
+    
 }
 
 displayLibrary()
