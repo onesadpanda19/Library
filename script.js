@@ -88,6 +88,7 @@ function displayLibrary () {
         // Grab each item during the loop iteration
         // Variable i will be the number of the loop, indexed at 0
         let book = myLibrary[i];
+        dataindex=i;
         const div = document.createElement("div")
         div.classList.toggle("activeBook")
         console.log(book);
@@ -123,7 +124,7 @@ function displayLibrary () {
 function removeFromLibrary (e) {
     let removeElement = e.target.parentNode;
     console.log(removeElement)
-    div.removeChild(removeElement)
+    libraryDiv.removeChild(removeElement) //now i need to remove it from the array
     
 }
 
