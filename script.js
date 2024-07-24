@@ -83,13 +83,16 @@ function removeBooks () {
 */
 
 function displayLibrary () {
+    deleteAll()
+
     for (let i = 0; i < myLibrary.length; i++) {
         // Block executes once for every item in the library
         // Grab each item during the loop iteration
         // Variable i will be the number of the loop, indexed at 0
         let book = myLibrary[i];
-        dataindex=i;
         const div = document.createElement("div")
+      
+        div.dataset.index = i;
         div.classList.toggle("activeBook")
         console.log(book);
         let removeButton = document.createElement('button') 
@@ -98,9 +101,20 @@ function displayLibrary () {
         libraryDiv.appendChild(div)
         div.appendChild(removeButton)
         removeButton.addEventListener("click", removeFromLibrary)
+        let toggle = document.createElement("button")
+        toggle.textContent = "Toggle Read"
+        toggle.addEventListener("click", toggleRead)
+        div.appendChild(toggle)
     }
 }
 
+
+
+function toggleRead (e) {
+    let selectElement = mylibrary[e.target.parentNode.book.read]
+    console.log(selectElement);
+
+}
 /* 
     Problem: When click remove button, it removes book from page
     1) We have the button
@@ -120,12 +134,25 @@ function displayLibrary () {
     </script>
 */
 
-// To give a quick hint, e will be the event of the click. All events have on them, a way to access the element being clicked! You might want to look at MDN for events, just to refresh, but it's going to be the event.target property, so take a look into that!
 function removeFromLibrary (e) {
     let removeElement = e.target.parentNode;
+    // REMOVE ELEMENT: { dataset: { index: 0 } }
+    console.log(removeElement.dataset.index) // 0 || 1
+    //      0         1             0
+    // [{HOBBIT: 0}, {ENDERS: 1}] -> [{ENDERS: 1}, {NEW: 2}]  LOOP -> [{ENDERS: 0}, {NEW: 1}]
+    myLibrary.splice(removeElement.dataset.index, 1)
+    // splice mdn to solve 
     console.log(removeElement)
     libraryDiv.removeChild(removeElement) //now i need to remove it from the array
     
+    displayLibrary(); //not working, adds things back while trying to delete
+    // Only removes one element, then readds all elements back to page, leaving behind whatever other elements there were
+    // 1st path: Nuke all elements, then displayLibrary. 2nd: New function, that doesn't readd elements, just fixes the index
+}
+
+function deleteAll(){
+    let e = document.querySelector(".library");
+    e.innerHTML = ""
 }
 
 displayLibrary()
