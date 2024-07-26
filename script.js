@@ -111,11 +111,19 @@ function displayLibrary () {
 
 
 function toggleRead (e) {
-    let selectElement = mylibrary[e.target.parentNode.book.read]
-    console.log(selectElement);
-
+    let selectRead = myLibrary[e.target.parentNode.dataset.index].read
+    console.log(selectRead);
 }
-/* 
+
+/*
+ if selectread is "read" then set string equal to "unread"
+ if selectread is "unread" then set string equal to "read"
+
+
+*/
+
+/*  
+
     Problem: When click remove button, it removes book from page
     1) We have the button
     2) We add an event listener, that will fire when clicking the remove
