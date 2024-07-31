@@ -112,14 +112,46 @@ function displayLibrary () {
 
 function toggleRead (e) {
     let selectRead = myLibrary[e.target.parentNode.dataset.index].read
+
+    let object = {
+        read: "read"
+    };
+    let string = "ted";
+
+    let newObject = object;
+    let newString = string;
+
+    newString = newString + " bed"
+
+    console.log(string);
+    console.log(newString);
+
+    newObject.read = "unread";
+
+    console.log(object.read);
+    console.log(newObject.read)
+
+    let book = myLibrary[e.target.parentNode.dataset.index]
+    if (selectRead == "read") {
+        book.read = "unread"
+        myLibrary[e.target.parentNode.dataset.index].read = "unread"
+        
+        
+        displayLibrary();
+     } else {
+        myLibrary[e.target.parentNode.dataset.index].read = "read"
+
+        displayLibrary();
+    }
+
+  
+
     console.log(selectRead);
 }
 
 /*
  if selectread is "read" then set string equal to "unread"
  if selectread is "unread" then set string equal to "read"
-
-
 */
 
 /*  
