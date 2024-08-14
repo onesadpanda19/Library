@@ -41,6 +41,21 @@ form.addEventListener('submit',(e) =>{
     const newAuthor = data.get('author');
     const newPages = data.get('pages')
     const newRead = data.get('read')
+    if (newTitle === "") {
+      return window.alert("input a valid Title")
+    }
+    if (newAuthor === "") {
+      return window.alert("input a valid Author")
+    }
+    if (newPages === "") {
+      return window.alert("input a valid Number")
+    }
+    if (newRead === null) {
+      return window.alert("input a valid choice")
+    }
+
+
+
 
     addBookToLibrary(newTitle, newAuthor, newPages, newRead)
 
@@ -64,18 +79,30 @@ function displayLibrary () {
     for (let i = 0; i < myLibrary.length; i++) {
         let book = myLibrary[i];
         const div = document.createElement("div")
+        let removeButton = document.createElement('button') 
+        let toggle = document.createElement("button");
+
+        // Setting up the div (card)
         div.dataset.index = i;
         div.classList.toggle("activeBook")
-        let removeButton = document.createElement('button') 
-        removeButton.textContent = "Remove"
         div.textContent = `Title:${book.title}, Author:${book.author}, Pages:${book.pages} pages, Read Status:${book.read}`;
-        libraryDiv.appendChild(div)
-        div.appendChild(removeButton)
+        
+        
+        // Setup remove button
+        removeButton.textContent = "Remove"
         removeButton.addEventListener("click", removeFromLibrary)
-        let toggle = document.createElement("button")
+        
+        // Setup toggle button
         toggle.textContent = "Toggle Read"
         toggle.addEventListener("click", toggleRead)
+        
+        // Add everything to page
+        libraryDiv.appendChild(div)
+        div.appendChild(removeButton)
         div.appendChild(toggle)
+
+
+        
     }
 }
 
